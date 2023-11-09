@@ -42,11 +42,12 @@ document
       );
     }
   });
-// Calcula el porcentaje total de las opciones elegidas del formulario
+//=====================
 // Obtén una referencia a todos los elementos de input tipo radio en el formulario
 const radioInputs = document.querySelectorAll('input[type="radio"]');
 const porcentajeElement = document.getElementById("porcentaje");
 let porcentajePromedio = 0;
+
 // Agrega un evento change a todos los elementos de input tipo radio
 radioInputs.forEach((radio) => {
   radio.addEventListener("change", calcularPorcentajeTotal);
@@ -57,6 +58,17 @@ function calcularPorcentajeTotal() {
   let totalChecked = 0;
   let totalRadios = radioInputs.length;
   let totalValor = 0;
+
+  // Verifica si hay alguna radio seleccionada
+  const haySeleccionada = Array.from(radioInputs).some(
+    (radio) => radio.checked
+  );
+
+  // Si no hay ninguna radio seleccionada, muestra 0% y sale de la función
+  if (!haySeleccionada) {
+    porcentajeElement.textContent = "0%";
+    return;
+  }
 
   // Recorre los radios y calcula el total de valor seleccionado
   radioInputs.forEach((radio) => {
@@ -78,33 +90,6 @@ function calcularPorcentajeTotal() {
 
 // Llama a la función para calcular el porcentaje total inicialmente
 calcularPorcentajeTotal();
-
-///===================
-// Obtén una referencia al formulario
-const surveyForm = document.getElementById("surveyForm");
-
-// Obtén una referencia a los botones "Limpiar" y "Guardar"
-const cancelButton = document.querySelector(".cancel-button");
-const saveButton = document.querySelector('.button[type="submit"]');
-
-// Agrega un evento click al botón "Limpiar"
-cancelButton.addEventListener("click", limpiarFormulario);
-
-// Función para limpiar el formulario y el porcentaje
-function limpiarFormulario() {
-  // Restablece el formulario a su estado inicial
-  surveyForm.reset();
-
-  // Vuelve a calcular el porcentaje total
-  calcularPorcentajeTotal();
-}
-
-// Agrega un evento submit al formulario
-surveyForm.addEventListener("submit", function (e) {
-  e.preventDefault(); // Evita que el formulario se envíe
-  // Aquí puedes agregar la lógica para guardar los datos del formulario si es necesario
-  // ...
-});
 
 //=========
 // Obtén una referencia a los elementos de input tipo radio en el formulario
