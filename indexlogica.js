@@ -80,23 +80,23 @@ function calcularPorcentajeTotal() {
 calcularPorcentajeTotal();
 
 ///===================
-// Boton de limpiar
 // Obtén una referencia al formulario
 const surveyForm = document.getElementById("surveyForm");
 
 // Obtén una referencia a los botones "Limpiar" y "Guardar"
-const cleanButton = document.querySelector(".clean-button");
+const cancelButton = document.querySelector(".cancel-button");
 const saveButton = document.querySelector('.button[type="submit"]');
 
 // Agrega un evento click al botón "Limpiar"
-cleanButton.addEventListener("click", limpiarFormulario);
+cancelButton.addEventListener("click", limpiarFormulario);
 
-// Función para limpiar el formulario
+// Función para limpiar el formulario y el porcentaje
 function limpiarFormulario() {
   // Restablece el formulario a su estado inicial
   surveyForm.reset();
 
   // Vuelve a calcular el porcentaje total
+  calcularPorcentajeTotal();
 }
 
 // Agrega un evento submit al formulario
@@ -105,4 +105,26 @@ surveyForm.addEventListener("submit", function (e) {
   // Aquí puedes agregar la lógica para guardar los datos del formulario si es necesario
   // ...
 });
+
 //=========
+// Obtén una referencia a los elementos de input tipo radio en el formulario
+const radioInput = document.querySelectorAll('input[type="radio"]');
+
+// Obtén una referencia al botón "Limpiar"
+const cleanButton = document.querySelector(".clean-button");
+
+// Agrega un evento click al botón "Limpiar"
+cleanButton.addEventListener("click", limpiarCheckbox);
+
+// Función para limpiar las checkbox seleccionadas
+function limpiarCheckbox() {
+  // Recorre los radios y resetea solo los que están seleccionados
+  radioInput.forEach((radio) => {
+    if (radio.checked) {
+      radio.checked = false;
+    }
+  });
+
+  // Vuelve a calcular el porcentaje total después de limpiar las checkbox
+  calcularPorcentajeTotal();
+}
