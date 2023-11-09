@@ -43,9 +43,11 @@ document
     }
   });
 //=====================
+//Calcular el porcentaje
 // Obtén una referencia a todos los elementos de input tipo radio en el formulario
 const radioInputs = document.querySelectorAll('input[type="radio"]');
 const porcentajeElement = document.getElementById("porcentaje");
+const tdPorcentaje = document.getElementById("porcentaje"); // Asegúrate de que este sea el id correcto del td
 let porcentajePromedio = 0;
 
 // Agrega un evento change a todos los elementos de input tipo radio
@@ -67,6 +69,7 @@ function calcularPorcentajeTotal() {
   // Si no hay ninguna radio seleccionada, muestra 0% y sale de la función
   if (!haySeleccionada) {
     porcentajeElement.textContent = "0%";
+    tdPorcentaje.style.backgroundColor = "white"; // Cambia el color a blanco cuando no hay selecciones
     return;
   }
 
@@ -78,20 +81,61 @@ function calcularPorcentajeTotal() {
     }
   });
 
-  // Calcula el porcentaje promedio
-  porcentajePromedio = (totalValor / (totalChecked * 5)) * 100;
+  // Calcula el porcentaje promedio ajustando a los valores máximo y mínimo
+  porcentajePromedio = ((totalValor - 8) / 32) * 100;
 
-  // Asegúrate de que el porcentaje promedio no sea mayor al 100%
-  porcentajePromedio = Math.min(porcentajePromedio, 100);
+  // Asegúrate de que el porcentaje promedio esté en el rango [0, 100]
+  porcentajePromedio = Math.max(0, Math.min(porcentajePromedio, 100));
 
   // Muestra el porcentaje promedio en el elemento con id "porcentaje"
   porcentajeElement.textContent = `${porcentajePromedio.toFixed(2)}%`;
+
+  // Cambia el color del tdPorcentaje según el porcentaje calculado
+  if (porcentajePromedio > 90) {
+    tdPorcentaje.style.backgroundColor = "rgb(0, 191, 255 )"; // Azul
+  } else if (porcentajePromedio > 80) {
+    tdPorcentaje.style.backgroundColor = "rgb(50, 205, 50)"; // Verde
+  } else if (porcentajePromedio > 70) {
+    tdPorcentaje.style.backgroundColor = "rgb(255, 215, 0)"; // Amarillo
+  } else if (porcentajePromedio > 60) {
+    tdPorcentaje.style.backgroundColor = "rgb(255, 69, 0)"; // Anaranjado
+  } else {
+    tdPorcentaje.style.backgroundColor = "rgb(220, 20, 60)"; // Rojo
+  }
 }
 
 // Llama a la función para calcular el porcentaje total inicialmente
 calcularPorcentajeTotal();
 
-//=========
+//===
+// Boton de cancelar
+// Obtén una referencia al formulario
+const surveyForm = document.getElementById("surveyForm");
+
+// Obtén una referencia a los botones "Limpiar" y "Guardar"
+const cancelButton = document.querySelector(".cancel-button");
+const saveButton = document.querySelector('.button[type="submit"]');
+
+// Agrega un evento click al botón "Limpiar"
+cancelButton.addEventListener("click", limpiarFormulario);
+
+// Función para limpiar el formulario y el porcentaje
+function limpiarFormulario() {
+  // Restablece el formulario a su estado inicial
+  surveyForm.reset();
+
+  // Vuelve a calcular el porcentaje total
+  calcularPorcentajeTotal();
+}
+
+// Agrega un evento submit al formulario
+surveyForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // Evita que el formulario se envíe
+  // Aquí puedes agregar la lógica para guardar los datos del formulario si es necesario
+  // ...
+});
+//====================
+//Boton limpiar
 // Obtén una referencia a los elementos de input tipo radio en el formulario
 const radioInput = document.querySelectorAll('input[type="radio"]');
 

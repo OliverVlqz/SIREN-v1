@@ -40,7 +40,6 @@ main.table {
 .tienda {
   align-content: end;
   padding-left: 15rem;
-
 }
 .table__body {
   width: 95%;
@@ -89,9 +88,6 @@ thead th {
   background-color: #d5d1defe;
 }
 
-tbody th {
-  border-color: #0021b3;
-}
 body tr:nth-child(even) {
   background-color: #0000000b;
 }
@@ -567,6 +563,7 @@ Nav Bar header
   left: 0;
   width: 100%;
   padding: 20px 100px;
+
   background: transparent;
   display: flex;
   justify-content: space-between;
