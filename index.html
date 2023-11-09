@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIREN</title>
+    <link rel="stylesheet" href="index.css" />
+    <script defer src="indexbg.js"></script>
+    <script defer src="indexlogica.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas" class="background-canvas"></canvas>
+    <header class="header">
+      <a href="#" class="logo">
+        <img
+          src="./PNG/image 17.png"
+          alt="Image Not Found"
+          style="height: 30px; width: 30px"
+        />
+        SIREN</a
+      >
+      <nav class="navbar">
+        <img
+          src="./PNG/Group 22.png"
+          style="height: 30px; width: 45px; padding-right: 15px"
+        />
+        <a href="#">Resumen</a>
+      </nav>
+    </header>
+    <main class="table">
+      <form id="surveyForm">
+        <section class="table__header">
+          <h1>
+            Encuesta de Calidad
+            <img src="PNG/tienda 1.png" style="height: 30px; width: 30px" />
+            <label for="">Tienda</label>
+            <select name="tienda" id="tienda">
+              <option value="">Seleccione una tienda</option>
+              <option value="tiendita1">Tiendita 1</option>
+              <option value="tiendita2">Tiendita 2</option>
+              <option value="tiendita3">Tiendita 3</option>
+            </select>
+            <img src="PNG/calendario 1.png" style="height: 30px; width: 30px" />
+            <label>Encuesta</label>
+            <input type="date" id="fecha" />
+          </h1>
+        </section>
+        <section class="table__body">
+          <table>
+            <tr>
+              <th>
+                <img
+                  src="./PNG/image 17-1.png"
+                  style="height: 30px; width: 30px"
+                />
+                Característica
+              </th>
+              <th>
+                <img
+                  src="./PNG/Group 19.png"
+                  style="height: 30px; width: 30px"
+                />
+                <br />
+                Mala
+              </th>
+              <th>
+                <img
+                  src="./PNG/Group 18.png"
+                  style="height: 30px; width: 30px"
+                />
+                <br />
+                Regular
+              </th>
+              <th>
+                <img
+                  src="./PNG/Group 17.png"
+                  style="height: 30px; width: 30px"
+                />
+                <br />
+                Buena
+              </th>
+              <th>
+                <img
+                  src="./PNG/Group 16.png"
+                  style="height: 30px; width: 30px"
+                />
+                <br />
+                Muy Buena
+              </th>
+              <th>
+                <img
+                  src="./PNG/Group 15.png"
+                  style="height: 30px; width: 30px"
+                />
+                <br />
+                Excelente
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src="./PNG/image 9.png"
+                  style="height: 30px; width: 30px"
+                />
+                Funcionalidad
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="funcionalidad" value="1" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="funcionalidad" value="2" />
+                  <div class="checkmark2"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="funcionalidad" value="3" />
+                  <div class="checkmark3"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="funcionalidad" value="4" />
+                  <div class="checkmark4"></div>
+                </label>
+              </td>
+              <td class="center-checkbox">
+                <label class="container">
+                  <input type="radio" name="funcionalidad" value="5" />
+                  <div class="checkmark5"></div>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src="./PNG/image 10.png"
+                  style="height: 30px; width: 30px"
+                />
+                Confiabilidad
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="confiabilidad" value="1" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="confiabilidad" value="2" />
+                  <div class="checkmark2"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="confiabilidad" value="3" />
+                  <div class="checkmark3"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="confiabilidad" value="4" />
+                  <div class="checkmark4"></div>
+                </label>
+              </td>
+              <td class="center-checkbox">
+                <label class="container">
+                  <input type="radio" name="confiabilidad" value="5" />
+                  <div class="checkmark5"></div>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src="./PNG/image 11.png"
+                  style="height: 30px; width: 30px"
+                />
+                Usabilidad
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="usabilidad" value="1" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="usabilidad" value="2" />
+                  <div class="checkmark2"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="usabilidad" value="3" />
+                  <div class="checkmark3"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="usabilidad" value="4" />
+                  <div class="checkmark4"></div>
+                </label>
+              </td>
+              <td class="center-checkbox">
+                <label class="container">
+                  <input type="radio" name="usabilidad" value="5" />
+                  <div class="checkmark5"></div>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src="./PNG/image 12.png"
+                  style="height: 30px; width: 30px"
+                />
+                Portabilidad
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="portabilidad" value="1" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="portabilidad" value="2" />
+                  <div class="checkmark2"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="portabilidad" value="3" />
+                  <div class="checkmark3"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="portabilidad" value="4" />
+                  <div class="checkmark4"></div>
+                </label>
+              </td>
+              <td class="center-checkbox">
+                <label class="container">
+                  <input type="radio" name="portabilidad" value="5" />
+                  <div class="checkmark5"></div>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src="./PNG/image 13.png"
+                  style="height: 30px; width: 30px"
+                />
+                Seguridad
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="seguridad" value="1" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="seguridad" value="2" />
+                  <div class="checkmark2"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="seguridad" value="3" />
+                  <div class="checkmark3"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="seguridad" value="4" />
+                  <div class="checkmark4"></div>
+                </label>
+              </td>
+              <td class="center-checkbox">
+                <label class="container">
+                  <input type="radio" name="seguridad" value="5" />
+                  <div class="checkmark5"></div>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src="./PNG/image 8.png"
+                  style="height: 30px; width: 30px"
+                />
+                Compatibilidad
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="compatibilidad" value="1" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="compatibilidad" value="2" />
+                  <div class="checkmark2"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="compatibilidad" value="3" />
+                  <div class="checkmark3"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="compatibilidad" value="4" />
+                  <div class="checkmark4"></div>
+                </label>
+              </td>
+              <td class="center-checkbox">
+                <label class="container">
+                  <input type="radio" name="compatibilidad" value="5" />
+                  <div class="checkmark5"></div>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src="./PNG/image 14.png"
+                  style="height: 30px; width: 30px"
+                />
+                Rendimiento
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="rendimiento" value="1" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="rendimiento" value="2" />
+                  <div class="checkmark2"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="rendimiento" value="3" />
+                  <div class="checkmark3"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="rendimiento" value="4" />
+                  <div class="checkmark4"></div>
+                </label>
+              </td>
+              <td class="center-checkbox">
+                <label class="container">
+                  <input type="radio" name="rendimiento" value="5" />
+                  <div class="checkmark5"></div>
+                </label>
+              </td>
+            </tr>
+            <tr></tr>
+            <tr>
+              <td>
+                <img
+                  src="./PNG/image 15.png"
+                  style="height: 30px; width: 30px"
+                />
+                Mantenimiento
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="mantenimiento" value="1" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="mantenimiento" value="2" />
+                  <div class="checkmark2"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="mantenimiento" value="3" />
+                  <div class="checkmark3"></div>
+                </label>
+              </td>
+              <td>
+                <label class="container">
+                  <input type="radio" name="mantenimiento" value="4" />
+                  <div class="checkmark4"></div>
+                </label>
+              </td>
+              <td class="center-checkbox">
+                <label class="container">
+                  <input type="radio" name="mantenimiento" value="5" />
+                  <div class="checkmark5"></div>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="container">
+                  <input type="number" name="porcentaje" value="porcentaje" />
+                </label>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Porcentaje:</td>
+              <td id="porcentaje"></td>
+            </tr>
+          </table>
+        </section>
+        <!-- Agregar el botón "Guardar" con un margen izquierdo -->
+        <div class="button-container">
+          <button
+            type="button"
+            class="button clean-button"
+            style="margin-left: 10px"
+          >
+            <img src="PNG/Limpiar.png" style="height: 20px; width: 20px" />
+            Limpiar
+          </button>
+
+          <button type="submit" class="button">
+            <img
+              src="PNG/Guardar.png"
+              style="height: 20px; width: 20px"
+            />Guardar
+          </button>
+          <button
+            type="button"
+            class="button cancel-button"
+            style="margin-left: 10px"
+          >
+            <img src="PNG/Eliminar.png" style="height: 20px; width: 20px" />
+            Cancelar
+          </button>
+
+          <!-- Agregar el botón "Cancelar" -->
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
