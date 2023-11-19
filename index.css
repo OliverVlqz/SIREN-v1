@@ -33,23 +33,23 @@ main.table {
 }
 .table__header {
   width: 100%;
+  border-collapse: collapse;
   background-color: #fff5;
-  padding: 0.8rem 2rem;
+  padding: 0.8rem;
   display: flex;
 }
 .tienda {
   align-content: end;
-  padding-left: 15rem;
+  padding-left: 18rem;
 }
 .table__body {
   width: 95%;
   background-color: #fffb;
-  margin: 0.8rem auto;
+  margin: 0.7rem auto;
   padding: 0.8rem auto;
 }
 
 .table__body::-webkit-scrollbar {
-  width: 0.5rem;
   height: 0.5rem;
 }
 .table__body::-webkit-scrollbar-thumb {
@@ -60,6 +60,7 @@ main.table {
 .table__body:hover::-webkit-scrollbar-thumb {
   visibility: visible;
 }
+
 table {
   width: 100%;
 }
@@ -69,7 +70,6 @@ td img {
   height: 36px;
   align-content: center;
   margin-right: 1rem;
-  border-radius: 25%;
   margin-left: 1rem;
 }
 
@@ -78,9 +78,10 @@ th,
 td {
   border-collapse: collapse;
   padding: 0.25rem;
-  border: solid black 1px;
+  border: solid black 3px;
   text-align: center;
 }
+
 thead th {
   position: sticky;
   top: 0;
@@ -463,10 +464,6 @@ tbody tr:hover {
     rotate: 0;
   }
 }
-.center-checkbox {
-  text-align: center; /* Centra horizontalmente el contenido */
-  vertical-align: middle; /* Centra verticalmente el contenido */
-}
 
 /*
 Buttons encuesta
@@ -606,7 +603,7 @@ Nav Bar header
   border-radius: 5px; /* Borde redondeado */
   margin-right: 10px; /* Espacio a la derecha del input */
   height: 35px; /* Altura deseada del input */
-  width: 150px; /* Ancho deseado del input */
+  width: 190px; /* Ancho deseado del input */
   font-size: 16px; /* Tamaño de fuente */
   color: #000; /* Color de texto */
 }
@@ -621,4 +618,29 @@ Nav Bar header
   width: 210px; /* Ancho deseado del input */
   font-size: 16px; /* Tamaño de fuente */
   color: #000; /* Color de texto */
+}
+
+.icon-cell {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Estilos para el cuerpo del mensaje de SweetAlert */
+.swal2-popup {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, 
+               "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, 
+               "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Estilos para el título de SweetAlert */
+.swal2-title {
+  color: #333; /* Cambia el color del título si lo deseas */
+}
+
+/* Estilo para el botón OK personalizado */
+.swal-confirm-button {
+  background-color: #FFA500 !important; /* Cambia el color del fondo a naranja */
+  border: 1px solid #FFA500 !important; /* Cambia el color del borde a naranja */
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5) !important; /* Agrega una sombra naranja al botón */
 }

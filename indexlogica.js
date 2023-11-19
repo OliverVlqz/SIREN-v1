@@ -1,3 +1,5 @@
+
+
 //Comprueba que el formulario este completo
 document
   .getElementById("surveyForm")
@@ -26,6 +28,8 @@ document
       }
     }
 
+    
+
     // Verifica el campo de la lista desplegable
     if (selectInput.value === "") {
       isAnyUnchecked = true;
@@ -37,9 +41,23 @@ document
 
     if (isAnyUnchecked) {
       event.preventDefault(); // Evita que el formulario se envíe
-      alert(
-        "Por favor, complete todos los campos antes de enviar la encuesta."
-      );
+      Swal.fire({
+        title: "Por favor, complete todos los campos antes de enviar la encuesta.",
+        icon: "warning",
+        confirmButtonColor: "#FFA500", // Cambia el color del botón OK a naranja
+        customClass: {
+          confirmButton: "swal-confirm-button", // Agrega una clase personalizada al botón OK
+        },
+      });
+      
+      
+    } else{
+      Swal.fire({
+        // Si todos los campos están completos, muestra la alerta de éxito
+        title: "Guardado con Éxito!",
+        text: "La encuesta ha sido guardada correctamente",
+        icon: "success"
+      });
     }
   });
 //=====================
@@ -143,7 +161,7 @@ const radioInput = document.querySelectorAll('input[type="radio"]');
 const cleanButton = document.querySelector(".clean-button");
 
 // Agrega un evento click al botón "Limpiar"
-cleanButton.addEventListener("click", limpiarCheckbox);
+(document.querySelector(".clean-button")).addEventListener("click", limpiarCheckbox);
 
 // Función para limpiar las checkbox seleccionadas
 function limpiarCheckbox() {
@@ -157,3 +175,6 @@ function limpiarCheckbox() {
   // Vuelve a calcular el porcentaje total después de limpiar las checkbox
   calcularPorcentajeTotal();
 }
+
+
+
