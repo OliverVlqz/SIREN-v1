@@ -146,7 +146,7 @@ function limpiarFormulario() {
   calcularPorcentajeTotal();
 }
 
-// Agrega un evento submit al formulario
+// Agrega un evento submit al formulario  
 surveyForm.addEventListener("submit", function (e) {
   e.preventDefault(); // Evita que el formulario se envíe
   // Aquí puedes agregar la lógica para guardar los datos del formulario si es necesario
@@ -175,6 +175,8 @@ function limpiarCheckbox() {
   // Vuelve a calcular el porcentaje total después de limpiar las checkbox
   calcularPorcentajeTotal();
 }
+
+  
 
 
 

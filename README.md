@@ -1,1 +1,14 @@
-# Proyecto integrador de la materia Metodologia y 
+# Proyecto integrador de la materia Estandares y Metricas de Desarrollo de Software
+
+## Descripcion del proyecto
+
+    El proyecto consiste en la creacion de una aplicacion web que permita realizar encuestas de calidad a los usuarios de una empresa, con el fin de mejorar la calidad de los servicios que se ofrecen. La aplicacion web debe permitir a los usuarios crear encuestas, responderlas y visualizar los resultados de las misma.
+
+## Integrantes:
+
+- Oliver Martinez Velasquez
+- Diego Eduardo Jaimes Flores
+- Rolando Perez Bahena
+- Noe Leonel Aldama Carrazco
+- Maximiliano Carrera Oropesa
+- Ricardo Monte Rubio
