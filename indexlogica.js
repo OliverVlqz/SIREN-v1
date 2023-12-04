@@ -1,5 +1,3 @@
-
-
 //Comprueba que el formulario este completo
 document
   .getElementById("surveyForm")
@@ -28,8 +26,6 @@ document
       }
     }
 
-    
-
     // Verifica el campo de la lista desplegable
     if (selectInput.value === "") {
       isAnyUnchecked = true;
@@ -42,21 +38,20 @@ document
     if (isAnyUnchecked) {
       event.preventDefault(); // Evita que el formulario se envíe
       Swal.fire({
-        title: "Por favor, complete todos los campos antes de enviar la encuesta.",
+        title:
+          "Por favor, complete todos los campos antes de enviar la encuesta.",
         icon: "warning",
         confirmButtonColor: "#FFA500", // Cambia el color del botón OK a naranja
         customClass: {
           confirmButton: "swal-confirm-button", // Agrega una clase personalizada al botón OK
         },
       });
-      
-      
-    } else{
+    } else {
       Swal.fire({
         // Si todos los campos están completos, muestra la alerta de éxito
         title: "Guardado con Éxito!",
         text: "La encuesta ha sido guardada correctamente",
-        icon: "success"
+        icon: "success",
       });
     }
   });
@@ -146,7 +141,7 @@ function limpiarFormulario() {
   calcularPorcentajeTotal();
 }
 
-// Agrega un evento submit al formulario  
+// Agrega un evento submit al formulario
 surveyForm.addEventListener("submit", function (e) {
   e.preventDefault(); // Evita que el formulario se envíe
   // Aquí puedes agregar la lógica para guardar los datos del formulario si es necesario
@@ -161,7 +156,9 @@ const radioInput = document.querySelectorAll('input[type="radio"]');
 const cleanButton = document.querySelector(".clean-button");
 
 // Agrega un evento click al botón "Limpiar"
-(document.querySelector(".clean-button")).addEventListener("click", limpiarCheckbox);
+document
+  .querySelector(".clean-button")
+  .addEventListener("click", limpiarCheckbox);
 
 // Función para limpiar las checkbox seleccionadas
 function limpiarCheckbox() {
@@ -175,8 +172,33 @@ function limpiarCheckbox() {
   // Vuelve a calcular el porcentaje total después de limpiar las checkbox
   calcularPorcentajeTotal();
 }
+//============ Aqui va el codigo para ocultar la tabla hasta que el usuario llene los datos del formulario (fecha y tienda) ============
+document.addEventListener("DOMContentLoaded", function () {
+  // Obtener elementos del DOM
+  const tiendaSelect = document.getElementById("tienda");
+  const fechaInput = document.getElementById("fecha");
+  const initialAside = document.getElementById("initialAside");
+  const formSection = document.getElementById("formSection");
+  const buttonContainer = document.getElementById("buttonContainer");
 
-  
+  // Agregar eventos de cambio en tienda y fecha
+  tiendaSelect.addEventListener("change", toggleFormVisibility);
+  fechaInput.addEventListener("input", toggleFormVisibility);
 
+  function toggleFormVisibility() {
+    // Verificar si ambos campos están seleccionados
+    const tiendaSeleccionada = tiendaSelect.value !== "";
+    const fechaIngresada = fechaInput.value !== "";
 
-
+    // Mostrar u ocultar el formulario, aside y botones según las condiciones
+    if (tiendaSeleccionada && fechaIngresada) {
+      initialAside.style.display = "none";
+      formSection.style.display = "block";
+      buttonContainer.style.display = "block";
+    } else {
+      initialAside.style.display = "block";
+      formSection.style.display = "none";
+      buttonContainer.style.display = "none";
+    }
+  }
+});

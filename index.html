@@ -46,53 +46,71 @@
             <input type="text" id="fecha" placeholder="Nombre de la Encuesta" />
           </div>
         </section>
-        <section class="table__body">
-          <table>
+        <aside id="initialAside" style="display: block; text-align: center; color: red; padding-top: 12rem; font-size: 2rem;">
+          <h2>Selecciona una tienda y una fecha</h2>
+        </aside>
+        <section class="table__body" id="formSection" style="display: none">
+          <table id="tabla">
             <tr>
-              <th style="color: white; background-color: black;">
+              <th style="color: white; background-color: black">
                 Características
               </th>
-              <th  style="background-color: rgb(220, 20, 60);">
+              <th style="background-color: rgb(220, 20, 60)">
                 <div style="color: black">
-                    <img src="./PNG/Group 19.png" style="height: 30px; width: 30px;" />
-                    <br />
-                    Mala
+                  <img
+                    src="./PNG/Group 19.png"
+                    style="height: 30px; width: 30px"
+                  />
+                  <br />
+                  Mala
                 </div>
               </th>
-              <th style="background-color: rgb(255, 69, 0);;">
-                <div style="color: black;">
-                    <img src="./PNG/Group 18.png" style="height: 30px; width: 30px" />
-                    <br />
-                    Regular
+              <th style="background-color: rgb(255, 69, 0)">
+                <div style="color: black">
+                  <img
+                    src="./PNG/Group 18.png"
+                    style="height: 30px; width: 30px"
+                  />
+                  <br />
+                  Regular
                 </div>
               </th>
-              <th style="background-color: rgb(255, 215, 0);">
-                <div style="color: black;">
-                    <img src="./PNG/Group 17.png" style="height: 30px; width: 30px" />
-                    <br />
-                    Buena
+              <th style="background-color: rgb(255, 215, 0)">
+                <div style="color: black">
+                  <img
+                    src="./PNG/Group 17.png"
+                    style="height: 30px; width: 30px"
+                  />
+                  <br />
+                  Buena
                 </div>
               </th>
-              <th style="background-color: rgb(50, 205, 50);">
-                <div style="color: black;">
-                    <img src="./PNG/Group 16.png" style="height: 30px; width: 30px" />
-                    <br />
-                    Muy Buena
+              <th style="background-color: rgb(50, 205, 50)">
+                <div style="color: black">
+                  <img
+                    src="./PNG/Group 16.png"
+                    style="height: 30px; width: 30px"
+                  />
+                  <br />
+                  Muy Buena
                 </div>
               </th>
-              <th style="background-color: rgb(0, 191, 255);">
-                <div style="color: black;">
-                    <img src="./PNG/Group 15.png" style="height: 30px; width: 30px" />
-                    <br />
-                    Excelente
+              <th style="background-color: rgb(0, 191, 255)">
+                <div style="color: black">
+                  <img
+                    src="./PNG/Group 15.png"
+                    style="height: 30px; width: 30px"
+                  />
+                  <br />
+                  Excelente
                 </div>
-            </th>
+              </th>
             </tr>
             <tr>
               <td class="icon-cell">
                 <img
                   src="./PNG/image 9.png"
-                  style="height: 30px; width: 30px; margin-right:23.2%;" 
+                  style="height: 30px; width: 30px; margin-right: 23.2%"
                 />
                 Funcionalidad
               </td>
@@ -131,7 +149,7 @@
               <td class="icon-cell">
                 <img
                   src="./PNG/image 10.png"
-                  style="height: 30px; width: 30px; margin-right:24.3%;"
+                  style="height: 30px; width: 30px; margin-right: 24.3%"
                 />
                 Confiabilidad
               </td>
@@ -170,7 +188,7 @@
               <td class="icon-cell">
                 <img
                   src="./PNG/image 11.png"
-                  style="height: 30px; width: 30px; margin-right:26.5%;"
+                  style="height: 30px; width: 30px; margin-right: 26.5%"
                 />
                 Usabilidad
               </td>
@@ -209,7 +227,7 @@
               <td class="icon-cell">
                 <img
                   src="./PNG/image 12.png"
-                  style="height: 30px; width: 30px; margin-right:25.4%;"
+                  style="height: 30px; width: 30px; margin-right: 25.4%"
                 />
                 Portabilidad
               </td>
@@ -248,7 +266,7 @@
               <td class="icon-cell">
                 <img
                   src="./PNG/image 13.png"
-                  style="height: 30px; width: 30px; margin-right:27%;"
+                  style="height: 30px; width: 30px; margin-right: 27%"
                 />
                 Seguridad
               </td>
@@ -287,7 +305,7 @@
               <td class="icon-cell">
                 <img
                   src="./PNG/image 8.png"
-                  style="height: 30px; width: 30px; margin-right:22.4%;"
+                  style="height: 30px; width: 30px; margin-right: 22.4%"
                 />
                 Compatibilidad
               </td>
@@ -326,10 +344,10 @@
               <td class="icon-cell">
                 <img
                   src="./PNG/image 14.png"
-                  style="height: 30px; width: 30px; margin-right:24.6%;"
+                  style="height: 30px; width: 30px; margin-right: 24.6%"
                 />
                 Rendimiento
-              </td >
+              </td>
               <td class="">
                 <label class="container">
                   <input type="radio" name="rendimiento" value="1" />
@@ -366,7 +384,7 @@
               <td class="icon-cell">
                 <img
                   src="./PNG/image 15.png"
-                  style="height: 30px; width: 30px; margin-right:21.5%;"
+                  style="height: 30px; width: 30px; margin-right: 21.5%"
                 />
                 Mantenimiento
               </td>
@@ -403,20 +421,20 @@
             </tr>
             <tr>
               <td>
-                  <label class="container">
-                      <input type="number" name="porcentaje" value="porcentaje" />
-                  </label>
+                <label class="container">
+                  <input type="number" name="porcentaje" value="porcentaje" />
+                </label>
               </td>
               <td></td>
               <td></td>
               <td></td>
               <td>Porcentaje:</td>
               <td id="porcentaje" class="center-checkbox"></td>
-          </tr>
+            </tr>
           </table>
         </section>
         <!-- Agregar el botón "Guardar" con un margen izquierdo -->
-        <div class="button-container">
+        <div class="button-container" id="buttonContainer" style="display: none;">
           <button
             type="button"
             class="button clean-button"
@@ -442,11 +460,10 @@
           </button>
 
           <!-- Agregar el botón "Cancelar" -->
-        </div>
+        </cla>
       </form>
     </main>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
   </body>
 </html>
