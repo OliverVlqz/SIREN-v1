@@ -180,16 +180,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const initialAside = document.getElementById("initialAside");
   const formSection = document.getElementById("formSection");
   const buttonContainer = document.getElementById("buttonContainer");
+  const cancelboton = document.querySelector(".cancel-button");
 
   // Agregar eventos de cambio en tienda y fecha
   tiendaSelect.addEventListener("change", toggleFormVisibility);
   fechaInput.addEventListener("input", toggleFormVisibility);
+  cancelboton.addEventListener("click", toggleFormVisibility);
 
   function toggleFormVisibility() {
     // Verificar si ambos campos están seleccionados
     const tiendaSeleccionada = tiendaSelect.value !== "";
     const fechaIngresada = fechaInput.value !== "";
-
+    limpiarCheckbox();
     // Mostrar u ocultar el formulario, aside y botones según las condiciones
     if (tiendaSeleccionada && fechaIngresada) {
       initialAside.style.display = "none";
@@ -201,4 +203,59 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonContainer.style.display = "none";
     }
   }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const limpiarBoton = document.getElementById('limpiarBoton');
+  const surveyForm = document.getElementById('surveyForm');
+
+
+  limpiarBoton.addEventListener('click', function () {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará todos los datos. ¿Quieres continuar?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, limpiar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+          surveyForm.reset();
+        Swal.fire(
+          'Limpiado!',
+          'Los datos han sido eliminados.',
+          'success'
+        
+        );
+      }
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const cancelButton = document.getElementById('cancelButton');
+  const surveyForm = document.getElementById('surveyForm');
+
+  cancelButton.addEventListener('click', function () {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Si cancelas, perderás los datos ingresados. ¿Quieres continuar?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        surveyForm.reset();
+        calcularPorcentajeTotal(); // Asegúrate de recalcular el porcentaje después de cancelar
+        Swal.fire(
+          'Cancelado',
+          'Los datos han sido restablecidos.',
+          'info'
+        );
+      }
+    });
+  });
 });

@@ -11,4 +11,4 @@ El proyecto consiste en la creacion de una aplicacion web que permita realizar e
 - Rolando Perez Bahena
 - Noe Leonel Aldama Carrazco
 - Maximiliano Carrera Oropesa
-- Ricardo Monte Rubio
+- Ricardo Fabricio Escobar Monterrubio
