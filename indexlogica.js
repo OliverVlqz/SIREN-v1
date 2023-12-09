@@ -5,9 +5,7 @@ document
     var radioInputs = document.querySelectorAll('input[type="radio"]');
     var selectInput = document.getElementById("tienda");
     var dateInput = document.getElementById("fecha");
-
     var isAnyUnchecked = false;
-
     // Verifica los campos de radio
     for (var i = 0; i < radioInputs.length; i++) {
       var radioName = radioInputs[i].name;
@@ -49,9 +47,28 @@ document
     } else {
       Swal.fire({
         // Si todos los campos están completos, muestra la alerta de éxito
-        title: "Guardado con Éxito!",
-        text: "La encuesta ha sido guardada correctamente",
-        icon: "success",
+        title: "¿Estás seguro?",
+        text: "Esta accion guardara todos los datos. ¿Quieres continuar?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Guardar",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const initialAside = document.getElementById("initialAside");
+          const formSection = document.getElementById("formSection");
+          const buttonContainer = document.getElementById("buttonContainer");
+          limpiarFormulario();
+          initialAside.style.display = "none";
+          formSection.style.display = "block";
+          buttonContainer.style.display = "block";
+          initialAside.style.display = "block";
+          formSection.style.display = "none";
+          buttonContainer.style.display = "none";
+          Swal.fire("Guardado", "Los datos han sido guardados.", "info");
+        }
       });
     }
   });
@@ -71,7 +88,6 @@ radioInputs.forEach((radio) => {
 // Función para calcular el porcentaje total
 function calcularPorcentajeTotal() {
   let totalChecked = 0;
-  let totalRadios = radioInputs.length;
   let totalValor = 0;
 
   // Verifica si hay alguna radio seleccionada
@@ -117,26 +133,63 @@ function calcularPorcentajeTotal() {
   }
 }
 
-// Llama a la función para calcular el porcentaje total inicialmente
-calcularPorcentajeTotal();
-
-//===
 // Boton de cancelar
 // Obtén una referencia al formulario
 const surveyForm = document.getElementById("surveyForm");
-
 // Obtén una referencia a los botones "Limpiar" y "Guardar"
-const cancelButton = document.querySelector(".cancel-button");
-const saveButton = document.querySelector('.button[type="submit"]');
+const cancelButton = document.getElementById("cancelButton");
+// Agrega un evento click al botón "Cancelar"
+cancelButton.addEventListener("click", confirmarCancelar);
 
-// Agrega un evento click al botón "Limpiar"
-cancelButton.addEventListener("click", limpiarFormulario);
+// Función para mostrar la alerta de confirmación al cancelar
+function confirmarCancelar() {
+  // Obtener elementos del DOM
+
+  const initialAside = document.getElementById("initialAside");
+  const formSection = document.getElementById("formSection");
+  const buttonContainer = document.getElementById("buttonContainer");
+
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Si cancelas, tendras que elegir una tiendita y una encuesta. ¿Quieres continuar?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar",
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      limpiarFormulario();
+      initialAside.style.display = "none";
+      formSection.style.display = "block";
+      buttonContainer.style.display = "block";
+      initialAside.style.display = "block";
+      formSection.style.display = "none";
+      buttonContainer.style.display = "none";
+      Swal.fire(
+        "Formulario Cancelado",
+        "Los datos han sido restablecidos.",
+        "info"
+      );
+    }
+  });
+}
+
+const tiendaSelect = document.getElementById("tienda");
+const fechaInput = document.getElementById("fecha");
 
 // Función para limpiar el formulario y el porcentaje
 function limpiarFormulario() {
   // Restablece el formulario a su estado inicial
-  surveyForm.reset();
+  radioInput.forEach((radio) => {
+    if (radio.checked) {
+      radio.checked = false;
+    }
+  });
 
+  tiendaSelect.value = false;
+  fechaInput.value = "";
   // Vuelve a calcular el porcentaje total
   calcularPorcentajeTotal();
 }
@@ -144,8 +197,6 @@ function limpiarFormulario() {
 // Agrega un evento submit al formulario
 surveyForm.addEventListener("submit", function (e) {
   e.preventDefault(); // Evita que el formulario se envíe
-  // Aquí puedes agregar la lógica para guardar los datos del formulario si es necesario
-  // ...
 });
 //====================
 //Boton limpiar
@@ -155,10 +206,28 @@ const radioInput = document.querySelectorAll('input[type="radio"]');
 // Obtén una referencia al botón "Limpiar"
 const cleanButton = document.querySelector(".clean-button");
 
-// Agrega un evento click al botón "Limpiar"
 document
   .querySelector(".clean-button")
-  .addEventListener("click", limpiarCheckbox);
+  .addEventListener("click", confirmarLimpiar);
+
+// Función para mostrar la alerta de confirmación
+function confirmarLimpiar() {
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Esta acción eliminará todos los datos. ¿Quieres continuar?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Limpiar",
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      limpiarCheckbox();
+      Swal.fire("Limpiado!", "Los datos han sido eliminados.", "success");
+    }
+  });
+}
 
 // Función para limpiar las checkbox seleccionadas
 function limpiarCheckbox() {
@@ -172,28 +241,29 @@ function limpiarCheckbox() {
   // Vuelve a calcular el porcentaje total después de limpiar las checkbox
   calcularPorcentajeTotal();
 }
+
 //============ Aqui va el codigo para ocultar la tabla hasta que el usuario llene los datos del formulario (fecha y tienda) ============
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", verificaTabla);
+
+function verificaTabla() {
   // Obtener elementos del DOM
   const tiendaSelect = document.getElementById("tienda");
   const fechaInput = document.getElementById("fecha");
   const initialAside = document.getElementById("initialAside");
   const formSection = document.getElementById("formSection");
   const buttonContainer = document.getElementById("buttonContainer");
-  const cancelboton = document.querySelector(".cancel-button");
 
   // Agregar eventos de cambio en tienda y fecha
   tiendaSelect.addEventListener("change", toggleFormVisibility);
   fechaInput.addEventListener("input", toggleFormVisibility);
-  cancelboton.addEventListener("click", toggleFormVisibility);
 
   function toggleFormVisibility() {
     // Verificar si ambos campos están seleccionados
     const tiendaSeleccionada = tiendaSelect.value !== "";
     const fechaIngresada = fechaInput.value !== "";
-    limpiarCheckbox();
     // Mostrar u ocultar el formulario, aside y botones según las condiciones
     if (tiendaSeleccionada && fechaIngresada) {
+      limpiarCheckbox();
       initialAside.style.display = "none";
       formSection.style.display = "block";
       buttonContainer.style.display = "block";
@@ -203,59 +273,4 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonContainer.style.display = "none";
     }
   }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  const limpiarBoton = document.getElementById('limpiarBoton');
-  const surveyForm = document.getElementById('surveyForm');
-
-
-  limpiarBoton.addEventListener('click', function () {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'Esta acción eliminará todos los datos. ¿Quieres continuar?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, limpiar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-          surveyForm.reset();
-        Swal.fire(
-          'Limpiado!',
-          'Los datos han sido eliminados.',
-          'success'
-        
-        );
-      }
-    });
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  const cancelButton = document.getElementById('cancelButton');
-  const surveyForm = document.getElementById('surveyForm');
-
-  cancelButton.addEventListener('click', function () {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'Si cancelas, perderás los datos ingresados. ¿Quieres continuar?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        surveyForm.reset();
-        calcularPorcentajeTotal(); // Asegúrate de recalcular el porcentaje después de cancelar
-        Swal.fire(
-          'Cancelado',
-          'Los datos han sido restablecidos.',
-          'info'
-        );
-      }
-    });
-  });
-});
+}
