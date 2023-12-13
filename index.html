@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-  <html lang="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SIREN</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="popup.css" />
     <script defer src="indexbg.js"></script>
     <script defer src="indexlogica.js"></script>
   </head>
@@ -24,7 +25,7 @@
           src="./PNG/lamina.png"
           style="height: 30px; width: 45px; padding-right: 15px"
         />
-        <a href="#">Resumen</a>
+        <a href="#modal">Resumen</a>
       </nav>
     </header>
     <main class="table">
@@ -478,7 +479,22 @@
         </div>
       </form>
     </main>
-
+    <div class="container-all" id="modal">
+      <div class="popup">
+        <div class="img"></div>
+        <div class="container-text">
+          <h1>Resumen</h1>
+          <p>
+            El resumen es un texto que se elabora a partir de otro, siguiendo
+            unas pautas determinadas y que expresa de forma breve y precisa las
+            ideas principales del texto original. El resumen es una de las
+            técnicas de estudio más importantes, ya que permite comprender y
+            memorizar mejor los contenidos de un texto.
+          </p>
+        </div>
+        <a href="#" class="btn-close-popup">X</a>
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
